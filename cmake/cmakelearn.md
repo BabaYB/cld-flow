@@ -31,10 +31,10 @@ From [PDF](https://github.com/yaozhongxiao/BuildSystem/blob/master/cmake/docs/CM
 是否直接在当前工程项目（有CMakeLists.txt）的路径下执行cmake，如果新建一个空的文件夹如build并在其中运行cmake则称之为外部构建（out-of-source），所产生的文件都在build中
 
 ### 命令
-> 命令不区分大小写
+> 命令不区分大小写   
 > 使用#进行注释
 
-#### cmake_minimun_required (VERSION 2.8)
+#### cmake_minimum_required (VERSION 2.8)
 设置最低版本为2.8
 
 #### project (hello)
@@ -155,3 +155,6 @@ foreach与endforeach配套使用
 ```
 
 ### 可自定义模块生成库
+
+### 原理
+> [Link](https://blog.csdn.net/ztemt_sw2/article/details/81384538)
