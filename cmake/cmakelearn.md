@@ -1,15 +1,22 @@
 ## CMake 笔记
 -------
 From [Link](http://www.hahack.com/codes/cmake/)   
-From [PDF](https://github.com/yaozhongxiao/BuildSystem/blob/master/cmake/docs/CMake%20Practice.pdf)
+From [PDF](https://github.com/yaozhongxiao/BuildSystem/blob/master/cmake/docs/CMake%20Practice.pdf)   
+From [Source](https://github.com/onqtam/awesome-cmake)   
+From [Introduction](https://cliutils.gitlab.io/modern-cmake/)   
+From [A good example for embedded development](https://www.jianshu.com/p/aaa19816f7ad)
 
 ### 编译流程
 - 编写CMakeLists.txt，如果多个目录，则每个目录下创建一个
 - 执行cmake PATH生成akefile，PATH为CMakeLists.txt所在路径
 - make
 
+### 扩展工具
+- [cmany](https://cmany.readthedocs.io/en/latest/cmany/)，命令行工具，更简单地使用cmake和编译工具
+
 ### 变量
-> 对变量的引用一般使用${}，但在IF等语句中则是直接使用变量名
+> 对变量的引用一般使用${}，但在IF等语句中则是直接使用变量名   
+> 正常变量和缓存变量以及属性
 - PROJECT_BINARY_DIR 编译发生的位置
 - <projectname>_BINARY_DIR
 - PROJECT_SOURCE_DIR 工程代码的位置，工程顶层目录
@@ -43,6 +50,9 @@ From [PDF](https://github.com/yaozhongxiao/BuildSystem/blob/master/cmake/docs/CM
 #### set (CMAKE_BUILD_TYPE "Debug")
 设置变量，一般变量，缓存变量，环境变量赋值
 
+#### list (APPEND MyList "a" "b" "c")
+在当前值作用域设置列表
+
 #### message (STATUS "a messaget" ...)
 打印信息，其余类型SEND_ERROR、FATAL_ERROR
 
@@ -53,7 +63,7 @@ From [PDF](https://github.com/yaozhongxiao/BuildSystem/blob/master/cmake/docs/CM
 将文件夹下所有源文件添加到指定变量，比如(. DIR_SRCS)
 
 #### add_subdirectory (math)
-存在子文件夹math，添加math路径进行访问\
+存在子文件夹math，添加math路径进行访问
 
 #### include_directories (/inc)
 向工程添加多个特定的头文件搜索路径
@@ -67,8 +77,8 @@ From [PDF](https://github.com/yaozhongxiao/BuildSystem/blob/master/cmake/docs/CM
 #### target_link_libaries (hello MathFunctions)
 添加链接库
 
-#### configure_file ("${PROJECT_SOURCE_DIR}/config.h.in")
-添加配置头文件，用于cmake对源码的设置
+#### configure_file ("${PROJECT_SOURCE_DIR}/config.h.in" "${PROJECT_BINARY_DIR}/config.h")
+添加配置头文件，用于cmake对源码的设置，生成的头文件可以由代码添加使用
 
 #### option (USE_MYMATH "Use provided math implementation" ON)
 添加一个选项USE_MYMATH，默认为ON，根据选项来确定是否使用自己的MathFunctions库
